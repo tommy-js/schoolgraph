@@ -5,9 +5,16 @@ function NewInputField(props) {
   const [id, setId] = useState(props.id);
 
   return (
-    <div>
-      <NewGrade id={id} updateMapper={props.updateMapper} />
-      <button onClick={() => props.removeObj(id)}>Remove</button>
+    <div className="grade_input_block">
+      <div className="left_align_grade_input">
+        <NewGrade id={id} updateMapper={props.updateMapper} />
+      </div>
+      <button
+        className="right_align_grade_button"
+        onClick={() => props.removeObj(id)}
+      >
+        X
+      </button>
     </div>
   );
 }
