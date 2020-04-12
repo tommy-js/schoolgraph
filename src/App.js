@@ -1,10 +1,10 @@
 import React from "react";
-import BodyComp from "./components/BodyComp";
+import CompLoader from "./components/CompLoader";
 
 function App() {
   return (
     <div>
-      <BodyComp />
+      <CompLoader />
     </div>
   );
 }

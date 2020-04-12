@@ -1,16 +1,21 @@
 import React, { useState } from "react";
+import "../main.scss";
 
 function NewGrade(props) {
   const [item, setItem] = useState(0);
 
   function updateInput(e) {
     let tempItem = e.target.value;
-    setItem(tempItem);
-    props.updateMapper(tempItem, props.id);
+    if (tempItem <= 150) {
+      setItem(tempItem);
+      props.updateMapper(tempItem, props.id);
+    } else {
+      return null;
+    }
   }
 
   return (
-    <div>
+    <div className="input_field_child">
       <input
         type="number"
         placeholder="grade"

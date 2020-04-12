@@ -3,10 +3,21 @@ import "../main.scss";
 
 function GraphNode(props) {
   const [useCount, setUseCount] = useState(props.count);
+  const [coloring, setColoring] = useState("grey");
 
   useEffect(() => {
     setUseCount(props.count);
   }, [props.count]);
+
+  useEffect(() => {
+    if (useCount >= 90) {
+      setColoring("green");
+    } else if (useCount > props.passVal && useCount < 90) {
+      setColoring("yellow");
+    } else if (useCount < props.passVal) {
+      setColoring("red");
+    }
+  });
 
   return (
     <div
@@ -18,8 +29,9 @@ function GraphNode(props) {
       <div
         className="graph_node"
         style={{
-          height: (1.4 * useCount) / (props.total / 5) + "px",
-          marginTop: (-1.4 * useCount) / (props.total / 5) + "px"
+          height: 2 * useCount + "px",
+          marginTop: -2 * useCount + "px",
+          backgroundColor: coloring
         }}
       ></div>
       <div className="node_info">

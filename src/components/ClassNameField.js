@@ -1,9 +1,16 @@
 import React from "react";
+import "../main.scss";
 
-function ClassNameField() {
+function ClassNameField(props) {
   return (
-    <div>
-      <input type="text" required placeholder="Class" />
+    <div className="input_field_child">
+      <input
+        className="input_field"
+        type="text"
+        required
+        placeholder="Class"
+        onChange={e => props.updateName(e)}
+      />
     </div>
   );
 }
