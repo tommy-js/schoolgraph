@@ -8,7 +8,7 @@ function ClassNameField(props) {
         className="input_field"
         type="text"
         required
-        placeholder="Class"
+        placeholder="class name"
         onChange={e => props.updateName(e)}
       />
     </div>

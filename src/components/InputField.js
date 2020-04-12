@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import NewInputField from "./NewInputField";
 
 function InputField(props) {
-  const [mapper, setMapper] = useState([]);
+  const [mapper, setMapper] = useState([
+    { id: 2222, count: 0 },
+    { id: 11111, count: 0 }
+  ]);
 
   useEffect(() => {
     setMapper(prev => [...prev, props.map]);

@@ -4,6 +4,7 @@ import InputField from "./InputField";
 import AddFieldButton from "./AddFieldButton";
 import SaveData from "./SaveData";
 import Graph from "./Graph";
+import EnterNotifyer from "./EnterNotifyer";
 import "../main.scss";
 
 export function field(num) {
@@ -39,6 +40,7 @@ function BodyComp() {
 
   return (
     <div className="body">
+      <EnterNotifyer modField={modField} />
       <div className="input_field_parent">
         <ClassNameField updateName={updateName} />
         <InputField

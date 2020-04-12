@@ -4,7 +4,7 @@ import "../main.scss";
 const AddFieldButton = props => {
   return (
     <button className="input_field_child" onClick={props.field}>
-      Button
+      Add Grade
     </button>
   );
 };

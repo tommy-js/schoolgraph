@@ -17,6 +17,7 @@ function NewGrade(props) {
   return (
     <div className="input_field_child">
       <input
+        className="input_type_number"
         type="number"
         placeholder="grade"
         min="0"

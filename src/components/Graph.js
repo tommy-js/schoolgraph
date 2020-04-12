@@ -1,10 +1,13 @@
 import React, { useState, useEffect, prevState } from "react";
 import GraphNode from "./GraphNode";
+import GraphInfo from "./GraphInfo";
+import GraphOptions from "./GraphOptions";
 import "../main.scss";
 
 function Graph(props) {
   const [graphmapper, setGraphmapper] = useState([]);
   const [displayer, setDisplayer] = useState({ opacity: 0, top: 100 });
+  const [visual, setVisual] = useState("none");
   const [passVal, setPassVal] = useState(60);
   const [totalScore, setTotalScore] = useState(0);
   const [avg, setAvg] = useState(0);
@@ -13,6 +16,7 @@ function Graph(props) {
     setGraphmapper(props.modField);
     if (graphmapper.length > 2) {
       setDisplayer({ opacity: 1, top: 0 });
+      setVisual("block");
     }
   }, [props.saveCount]);
 
@@ -23,15 +27,25 @@ function Graph(props) {
       checkVal = checkVal + graphmapper[k].count;
       console.log(checkVal);
     }
-    setAvg(checkVal / graphmapper.length);
+    setAvg(Math.floor((checkVal / graphmapper.length) * 100) / 100);
+    if (typeof avg != "number") {
+      setAvg(0);
+    }
   }, [props.saveCount]);
 
   return (
     <div className="graph_encloser">
-      <div className="options_sideview"></div>
+      <div className="options_sideview" style={{ display: visual }}>
+        <div className="inner_options_sideview">
+          <GraphOptions />
+        </div>
+      </div>
       <div
         className="graph"
-        style={{ opacity: displayer.opacity, top: displayer.top + "px" }}
+        style={{
+          opacity: displayer.opacity,
+          top: displayer.top + "px"
+        }}
       >
         <div className="graph_title">
           <span className="graph_title_span">{props.nameState}</span>
@@ -51,7 +65,11 @@ function Graph(props) {
           style={{ height: 2 * passVal + "px" }}
         ></div>
       </div>
-      <div className="info_sideview">Avg:{avg}</div>
+      <div className="info_sideview" style={{ display: visual }}>
+        <div className="inner_info_sideview">
+          <GraphInfo avg={avg} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -12,7 +12,15 @@
   margin-right: auto;
   margin-top: 50px;
   margin-bottom: 50px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: 0.3s;
   // border: 1px solid green;
+}
+
+.graph_encloser:hover {
+  border: 1px solid grey;
+  transition: 0.3s;
 }
 
 .graph_encloser:hover > .info_sideview,
@@ -31,6 +39,13 @@
   transition: 0.3s;
 }
 
+.inner_options_sideview {
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid green;
+}
+
 .info_sideview {
   position: relative;
   display: inline-block;
@@ -40,6 +55,13 @@
   width: 12%;
   border: 1px solid red;
   transition: 0.3s;
+}
+
+.inner_info_sideview {
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid green;
 }
 
 .graph {
@@ -114,15 +136,26 @@
 .input_field_parent {
   position: relative;
   width: 200px;
-  margin-top: 150px;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid red;
 }
 
 .input_field_child {
   height: 50px;
   width: 100%;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.input_type_number {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 18px;
 }
 
 .input_field {
@@ -130,6 +163,13 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.input_field:hover,
+.input_type_number:hover {
+  border: 1px solid grey;
 }
 
 input::-webkit-outer-spin-button,
@@ -140,4 +180,14 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.enter_notifyer {
+  position: relative;
+  margin-top: 75px;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  color: grey;
+  transition: 0.3s;
 }
