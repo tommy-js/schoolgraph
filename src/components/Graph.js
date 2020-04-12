@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GraphNode from "./GraphNode";
+import "../main.scss";
 
 function Graph(props) {
-  const [graphmapper, setGraphmapper] = useState([{ count: 100 }]);
+  const [graphmapper, setGraphmapper] = useState(props.modField);
+
+  useEffect(() => {
+    setGraphmapper(props.modField);
+  }, [props.saveCount]);
+
   return (
-    <div>
-      {graphmapper.map(el => (
-        <GraphNode count={el.count} />
-      ))}
+    <div className="graph">
+      <div className="graph_node_container">
+        {graphmapper.map(el => (
+          <GraphNode count={el.count} key={el.id} total={graphmapper.length} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -16,19 +16,33 @@ export function field(num) {
 
 function BodyComp() {
   const [addField, setAddField] = useState({ id: Math.random() * 1000 });
+  const [modField, setModField] = useState([]);
+  const [saveCount, setSaveCount] = useState(0);
 
   function updateField() {
     setAddField(field(Math.random()));
     console.log(addField);
   }
 
+  function setFields(obj) {
+    setModField(obj);
+  }
+
+  function countPasser(item) {
+    setSaveCount(item);
+  }
+
   return (
     <div className="body">
       <ClassNameField />
-      <InputField map={addField} />
+      <InputField
+        map={addField}
+        setFields={setFields}
+        countPasser={countPasser}
+      />
       <AddFieldButton field={updateField} />
       <SaveData />
-      <Graph />
+      <Graph modField={modField} saveCount={saveCount} />
     </div>
   );
 }

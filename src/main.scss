@@ -5,10 +5,46 @@
   margin-right: auto;
 }
 
+.graph {
+  position: relative;
+  max-width: 950px;
+  min-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  border: 1px solid grey;
+  margin-top: 50px;
+}
+
+.graph_node_container {
+  position: relative;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: relative;
+  display: inline-block;
+  top: 300px;
+  min-width: 2%;
+  max-width: 20%;
+}
+
 .graph_node {
   position: relative;
-  margin-top: 300px;
-  width: 40px;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 100%;
+  max-height: 300px;
+  border-radius: 2.5px;
   background-color: blue;
-  border: 1px solid green;
+  transition: 0.3s;
+}
+
+.node_info {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
 }

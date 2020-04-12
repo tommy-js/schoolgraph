@@ -4,8 +4,9 @@ function NewGrade(props) {
   const [item, setItem] = useState(0);
 
   function updateInput(e) {
-    setItem(e.target.value);
-    props.updateMapper(item, props.id);
+    let tempItem = e.target.value;
+    setItem(tempItem);
+    props.updateMapper(tempItem, props.id);
   }
 
   return (
@@ -14,6 +15,7 @@ function NewGrade(props) {
         type="number"
         placeholder="grade"
         min="0"
+        max="200"
         onChange={e => updateInput(e)}
       />
     </div>

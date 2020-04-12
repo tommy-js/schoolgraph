@@ -10,13 +10,16 @@ function InputField(props) {
 
   function updateMapper(item, id) {
     let var1 = mapper.find(el => el.id === id);
+    let index = mapper.indexOf(var1);
     let var2 = mapper;
-    var2[var1] = {
+    var2[index] = {
       id: id,
-      count: item
+      count: Number(item)
     };
     setMapper(var2);
+    props.countPasser(item);
     console.log(var2);
+    props.setFields(var2);
   }
 
   return (
