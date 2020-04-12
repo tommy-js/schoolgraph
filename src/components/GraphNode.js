@@ -10,11 +10,12 @@ function GraphNode(props) {
   }, [props.count]);
 
   useEffect(() => {
-    if (useCount >= 90) {
+    let passing = Number(props.passVal);
+    if (useCount >= passing + passing / 2) {
       setColoring("green");
-    } else if (useCount > props.passVal && useCount < 90) {
+    } else if (useCount > passing && useCount < passing + passing / 2) {
       setColoring("yellow");
-    } else if (useCount < props.passVal) {
+    } else if (useCount < passing) {
       setColoring("red");
     }
   });

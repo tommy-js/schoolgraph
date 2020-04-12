@@ -33,11 +33,15 @@ function Graph(props) {
     }
   }, [props.saveCount]);
 
+  function modPassVal(e) {
+    setPassVal(e);
+  }
+
   return (
     <div className="graph_encloser">
       <div className="options_sideview" style={{ display: visual }}>
         <div className="inner_options_sideview">
-          <GraphOptions />
+          <GraphOptions modPassVal={modPassVal} />
         </div>
       </div>
       <div

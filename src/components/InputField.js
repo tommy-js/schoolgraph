@@ -25,10 +25,25 @@ function InputField(props) {
     props.setFields(var2);
   }
 
+  function removeObj(arrayIndex) {
+    let var1 = mapper.find(el => el.id === arrayIndex);
+    let index = mapper.indexOf(var1);
+    let var2 = mapper;
+    var2.splice(index, 1);
+    setMapper(var2);
+    props.countPasser(Math.floor(Math.random() * 100));
+    props.setFields(var2);
+  }
+
   return (
     <div>
       {mapper.map(el => (
-        <NewInputField key={el.id} id={el.id} updateMapper={updateMapper} />
+        <NewInputField
+          key={el.id}
+          id={el.id}
+          updateMapper={updateMapper}
+          removeObj={removeObj}
+        />
       ))}
     </div>
   );

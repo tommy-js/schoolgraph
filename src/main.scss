@@ -1,3 +1,11 @@
+@mixin t {
+  // border: 1px solid red;
+}
+
+@mixin t2 {
+  // border: 1px solid green;
+}
+
 .body {
   position: relative;
   width: 85%;
@@ -8,6 +16,7 @@
 .graph_encloser {
   max-width: 1050px;
   min-width: 500px;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
@@ -24,7 +33,7 @@
 }
 
 .graph_encloser:hover > .info_sideview,
-.options_sideview {
+.graph_encloser:hover > .options_sideview {
   opacity: 1;
   transition: 0.3s;
 }
@@ -32,45 +41,46 @@
 .options_sideview {
   position: relative;
   display: inline-block;
+  vertical-align: top;
   opacity: 0;
   float: left;
   height: 100%;
   width: 15%;
   transition: 0.3s;
+  @include t;
 }
 
 .inner_options_sideview {
   width: 100%;
   margin-top: 50px;
   margin-bottom: 50px;
-  border: 1px solid green;
+  @include t2;
 }
 
 .info_sideview {
   position: relative;
   display: inline-block;
+  vertical-align: top;
   opacity: 0;
   float: right;
   height: 100%;
-  width: 12%;
-  border: 1px solid red;
+  width: 15%;
   transition: 0.3s;
+  @include t;
 }
 
 .inner_info_sideview {
   width: 100%;
   margin-top: 50px;
   margin-bottom: 50px;
-  border: 1px solid green;
+  @include t2;
 }
 
 .graph {
   position: relative;
-  width: 70%;
+  width: 69%;
   height: 400px;
   display: inline-block;
-  left: 50%; //Moves the element to the left by 50%
-  transform: translateX(-50%);
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
