@@ -12,8 +12,7 @@ function GraphNode(props) {
     <div
       className="container"
       style={{
-        width: 60 / props.total + "%",
-        marginLeft: 60 / props.total + "px"
+        width: 100 / props.total + "%"
       }}
     >
       <div

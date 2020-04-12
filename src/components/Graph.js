@@ -3,7 +3,7 @@ import GraphNode from "./GraphNode";
 import "../main.scss";
 
 function Graph(props) {
-  const [graphmapper, setGraphmapper] = useState(props.modField);
+  const [graphmapper, setGraphmapper] = useState([]);
 
   useEffect(() => {
     setGraphmapper(props.modField);
