@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import SubGrade from "./SubGrade";
 import "../main.scss";
 
 function NewGrade(props) {
   const [score, setTotalScore] = useState({ grade: 0, totalGrade: null });
+  const [gradeMapper, setGradeMapper] = useState([]);
 
   useEffect(() => {
     props.updateMapper(score.grade, props.id, score.totalGrade);
@@ -10,12 +12,34 @@ function NewGrade(props) {
 
   function updateGrade(e) {
     let tempItem = e.target.value;
-    setTotalScore({ grade: tempItem, totalGrade: score.totalGrade });
+    if (tempItem < 150)
+      setTotalScore({ grade: tempItem, totalGrade: score.totalGrade });
   }
 
   function modTotalCourse(e) {
     let totalCourseScore = e.target.value;
-    setTotalScore({ grade: score.grade, totalGrade: totalCourseScore });
+    if (totalCourseScore <= 100)
+      setTotalScore({ grade: score.grade, totalGrade: totalCourseScore });
+  }
+
+  function alterGrade(id, item) {
+    let index = gradeMapper.find(el => el.id === id);
+    let grades = gradeMapper.indexOf(index);
+    let gradeChart = gradeMapper;
+    gradeChart[grades] = {
+      grade: Number(item),
+      id: id
+    };
+    setGradeMapper(gradeChart);
+    console.log(gradeMapper);
+  }
+
+  function addNewGrade() {
+    const newGrade = {
+      grade: null,
+      id: Math.floor(Math.random() * 10000)
+    };
+    setGradeMapper(prev => [...prev, newGrade]);
   }
 
   return (
@@ -35,6 +59,10 @@ function NewGrade(props) {
         max="100"
         onChange={e => modTotalCourse(e)}
       />
+      {gradeMapper.map(el => (
+        <SubGrade alterGrade={alterGrade} id={el.id} />
+      ))}
+      <button onClick={addNewGrade}>Add Sub-Grade</button>
     </div>
   );
 }

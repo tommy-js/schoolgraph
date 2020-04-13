@@ -6,8 +6,9 @@ function GraphNode(props) {
   const [coloring, setColoring] = useState("grey");
 
   useEffect(() => {
-    setUseCount(props.count);
-  }, [props.count]);
+    if (props.totScore === 0) setUseCount(props.count);
+    else setUseCount((props.count * props.totScore) / 100);
+  });
 
   useEffect(() => {
     let passing = Number(props.passVal);

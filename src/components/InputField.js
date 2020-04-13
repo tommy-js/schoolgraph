@@ -20,10 +20,10 @@ function InputField(props) {
       count: Number(item),
       totScore: Number(totalGrade)
     };
-    console.log(var2);
     setMapper(var2);
     props.countPasser(item);
     props.setFields(var2);
+    // console.log(var2);
   }
 
   function removeObj(arrayIndex) {
