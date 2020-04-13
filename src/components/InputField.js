@@ -8,7 +8,10 @@ function InputField(props) {
   ]);
 
   useEffect(() => {
-    setMapper(prev => [...prev, props.map]);
+    let map = props.map;
+    let newmapper = mapper;
+    newmapper[newmapper.length] = map;
+    setMapper(newmapper);
   }, [props.map]);
 
   function updateMapper(item, id, totalGrade) {
@@ -44,6 +47,7 @@ function InputField(props) {
           id={el.id}
           updateMapper={updateMapper}
           removeObj={removeObj}
+          updateSmallGrade={props.updateSmallGrade}
         />
       ))}
     </div>

@@ -7,7 +7,11 @@ function NewInputField(props) {
   return (
     <div className="grade_input_block">
       <div className="left_align_grade_input">
-        <NewGrade id={id} updateMapper={props.updateMapper} />
+        <NewGrade
+          id={id}
+          updateMapper={props.updateMapper}
+          updateSmallGrade={props.updateSmallGrade}
+        />
       </div>
       <button
         className="right_align_grade_button"

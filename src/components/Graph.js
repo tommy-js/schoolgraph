@@ -11,6 +11,11 @@ function Graph(props) {
   const [passVal, setPassVal] = useState(60);
   const [totalScore, setTotalScore] = useState(0);
   const [avg, setAvg] = useState(0);
+  const [trueFalse, setTrueFalse] = useState(false);
+
+  useEffect(() => {
+    setTrueFalse(true);
+  }, []);
 
   useEffect(() => {
     setGraphmapper(props.modField);
@@ -19,6 +24,17 @@ function Graph(props) {
       setVisual("block");
     }
   }, [props.saveCount]);
+
+  useEffect(() => {
+    if (trueFalse) {
+      let smallArray = props.smallGrade;
+      let updatedSmallArray = smallArray[smallArray.length - 1];
+      let mapper = graphmapper;
+      mapper[graphmapper.length] = updatedSmallArray;
+      setGraphmapper(mapper);
+      console.log(graphmapper);
+    }
+  }, [props.smallGrade]);
 
   useEffect(() => {
     setTotalScore(0);

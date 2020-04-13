@@ -19,6 +19,11 @@ export function field(num) {
 function BodyComp(props) {
   const [addField, setAddField] = useState({ id: Math.random() * 1000 });
   const [nameState, setNameState] = useState("");
+  const [smallGrade, setSmallGrade] = useState([]);
+
+  function updateSmallGrade(smallArray) {
+    setSmallGrade(smallArray);
+  }
 
   function updateField() {
     setAddField(field(Math.random()));
@@ -37,6 +42,7 @@ function BodyComp(props) {
           map={addField}
           setFields={props.setFields}
           countPasser={props.countPasser}
+          updateSmallGrade={updateSmallGrade}
         />
         <AddFieldButton field={updateField} />
       </div>
@@ -46,6 +52,7 @@ function BodyComp(props) {
         modField={props.modField}
         saveCount={props.saveCount}
         numberOfEntries={props.numberOfEntries}
+        smallGrade={smallGrade}
       />
     </div>
   );
