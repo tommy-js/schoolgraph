@@ -3,25 +3,26 @@ import NewInputField from "./NewInputField";
 
 function InputField(props) {
   const [mapper, setMapper] = useState([
-    { id: 2222, count: 0 },
-    { id: 11111, count: 0 }
+    { id: 2222, count: 0, totScore: null },
+    { id: 11111, count: 0, totScore: null }
   ]);
 
   useEffect(() => {
     setMapper(prev => [...prev, props.map]);
   }, [props.map]);
 
-  function updateMapper(item, id) {
+  function updateMapper(item, id, totalGrade) {
     let var1 = mapper.find(el => el.id === id);
     let index = mapper.indexOf(var1);
     let var2 = mapper;
     var2[index] = {
       id: id,
-      count: Number(item)
+      count: Number(item),
+      totScore: Number(totalGrade)
     };
+    console.log(var2);
     setMapper(var2);
     props.countPasser(item);
-    console.log(var2);
     props.setFields(var2);
   }
 

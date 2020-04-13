@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../main.scss";
 
 function NewGrade(props) {
-  const [item, setItem] = useState(0);
+  const [score, setTotalScore] = useState({ grade: 0, totalGrade: null });
 
-  function updateInput(e) {
+  useEffect(() => {
+    props.updateMapper(score.grade, props.id, score.totalGrade);
+  });
+
+  function updateGrade(e) {
     let tempItem = e.target.value;
-    if (tempItem <= 150) {
-      setItem(tempItem);
-      props.updateMapper(tempItem, props.id);
-    } else {
-      return null;
-    }
+    setTotalScore({ grade: tempItem, totalGrade: score.totalGrade });
+  }
+
+  function modTotalCourse(e) {
+    let totalCourseScore = e.target.value;
+    setTotalScore({ grade: score.grade, totalGrade: totalCourseScore });
   }
 
   return (
@@ -22,7 +26,14 @@ function NewGrade(props) {
         placeholder="grade"
         min="0"
         max="200"
-        onChange={e => updateInput(e)}
+        onChange={e => updateGrade(e)}
+      />
+      <input
+        type="number"
+        placeholder="Percentage of total course"
+        min="0"
+        max="100"
+        onChange={e => modTotalCourse(e)}
       />
     </div>
   );

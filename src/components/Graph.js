@@ -14,7 +14,7 @@ function Graph(props) {
 
   useEffect(() => {
     setGraphmapper(props.modField);
-    if (graphmapper.length > 2) {
+    if (graphmapper.length > 2 && props.numberOfEntries >= 3) {
       setDisplayer({ opacity: 1, top: 0 });
       setVisual("block");
     }
@@ -25,7 +25,6 @@ function Graph(props) {
     let checkVal = 0;
     for (let k = 0; k < graphmapper.length; k++) {
       checkVal = checkVal + graphmapper[k].count;
-      console.log(checkVal);
     }
     setAvg(Math.floor((checkVal / graphmapper.length) * 100) / 100);
     if (typeof avg != "number") {
@@ -59,6 +58,7 @@ function Graph(props) {
             <GraphNode
               passVal={passVal}
               count={el.count}
+              totScore={el.totScore}
               key={el.id}
               total={graphmapper.length}
             />

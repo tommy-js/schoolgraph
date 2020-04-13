@@ -37,6 +37,7 @@ function GraphNode(props) {
       ></div>
       <div className="node_info">
         <p>{props.count}</p>
+        <p>{props.totScore}</p>
       </div>
     </div>
   );
